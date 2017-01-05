@@ -1,0 +1,24 @@
+{
+  "name": "foreach",
+  "version": "0.0.1",
+  "description": "A function to return a promise of chained promises made by resolving each value in an array to a then function.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "pending"
+  },
+  "repository": {
+    "type": "git",
+    "url": "pending"
+  },
+  "keywords": [
+    "pending"
+  ],
+  "author": "Vikas Gautam <v33vikasgautam@gmail.com> (http://mytrikks.blogspot.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "promise": "^7.1.1"
+  }
+}
