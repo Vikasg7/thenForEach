@@ -1,28 +1,37 @@
 (function (require, module) {
 
-   var Promise = require("promise")
-   var forEach = require("../index.js")
+   var Promise = require("../index.js")
 
-   var length = 10000
-   var arr = []
-   // array.forEach(function (item) { arr.push(1) })
-   var i
-   for (i = 0; i < 1000000; i++) {
-      arr.push(i)
-   }
-
-   // console.log(arr)
-
-   var startTime = process.uptime()
-   Promise.resolve({array: arr, context: 0})
-      .then(forEach(function doThis(item, index, context) {
-         if (index % 5 === 0) return Promise.reject(context)
-         return context + 1
-      }, function onCatch(context) {
-         return context
-      })).then(function (context) {
-         console.log(context)
-         console.log(process.uptime() - startTime)
+   // First way
+   Promise.resolve({array: [1,2,3,4,5], context: {sum: 0}})
+      .thenForEach({
+         doThis: function (item, index, context) {
+            context.sum += item
+            return context
+         },
+         // Optional to pass onError
+         onError: function (item, index, error) {
+            console.log(error)
+         }
       })
+      .then(function (context) {
+         console.log(context.sum)
+      })
+
+   // Second way
+   Promise.resolve({array: [1,2,3,4,5], context: {sum: 0}})
+      .thenForEach(
+         function doThis(item, index, context) {
+            context.sum += item
+            return context
+         }, 
+         // Optional to pass onError
+         function onError(item, index, error) {
+            console.log(error)
+         }
+      )
+      .then(function (context) {
+         console.log(context.sum)
+      })   
 
 })(require, module)

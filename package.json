@@ -1,7 +1,7 @@
 {
-  "name": "foreach",
+  "name": "thenForEach",
   "version": "0.0.1",
-  "description": "A function to return a promise of chained promises made by resolving each value in an array to a then function.",
+  "description": "A prototype function to return a promise of chained promises made by binding each value in an array to chained then calls.",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -19,6 +19,6 @@
   "author": "Vikas Gautam <v33vikasgautam@gmail.com> (http://mytrikks.blogspot.com)",
   "license": "MIT",
   "devDependencies": {
-    "promise": "^7.1.1"
+    "promise": "latest"
   }
 }
