@@ -1,6 +1,7 @@
 (function (require, module) {
 
-   var Promise = require("../index.js")
+   var thenForEach = require("../index.js")
+   var Promise = thenForEach.extends(require("promise"))
 
    // First way
    Promise.resolve({array: [1,2,3,4,5], context: {sum: 0}})
@@ -19,7 +20,7 @@
       })
 
    // Second way
-   Promise.resolve({array: [1,2,3,4,5], context: {sum: 0}})
+   Promise.resolve({array: [1,2,3,4,6], context: {sum: 0}})
       .thenForEach(
          function doThis(item, index, context) {
             context.sum += item

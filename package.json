@@ -18,7 +18,7 @@
   ],
   "author": "Vikas Gautam <v33vikasgautam@gmail.com> (http://mytrikks.blogspot.com)",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "promise": "latest"
   }
 }

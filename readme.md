@@ -6,7 +6,8 @@
    * Syntax :-
    
    ````javascript
-         var Promise = require("thenForEach")
+         var thenForEach = require("thenForEach")
+         var Promise = thenForEach.extends(require("promise"))
          Promise.resolve({array: [1,2,3,4], context: {}})
             .thenForEach(doThis, onError) 
       // OR .thenForEach({doThis: function () {}, onError: function () {}})
