@@ -13,6 +13,7 @@
    }
 
    module.exports = {
+      thenForEach: thenForEach,
       extends: function (Promise) {
          Promise.prototype.thenForEach = thenForEach
          return Promise
