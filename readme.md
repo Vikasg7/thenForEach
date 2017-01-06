@@ -14,4 +14,5 @@
    ````
    * `doThis` is resolved with `(item, index, context)`
    * `onError` is resolved with `(item, index, error)`
+   * Providing `onError` function is optional.
    * Please check tests folder to know more about the usage.
