@@ -1,6 +1,6 @@
 (function (require, module) {
 
-   function thenForEach (doThis, onError) {
+   function thenForEach(doThis, onError) {
       if (doThis.doThis) { onError = doThis.onError; doThis = doThis.doThis} // Mapping arguments
       var Promise = this.constructor
       return this.then(function makeChainedPromise(array) {
