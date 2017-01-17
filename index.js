@@ -4,7 +4,8 @@
       if (doThis.doThis) { onError = doThis.onError; doThis = doThis.doThis} // Mapping arguments
       var Promise = this.constructor
       return this.then(function makeChainedPromise(array) {
-         if (!Array.isArray(array)) { context = array.context;  array = array.array } // Mapping arguments
+         var context
+         if (!Array.isArray(array)) { context = array.context;  array = array.array }// Mapping arguments
          return array.reduce(function iterator(Promise, item, index) {
             return Promise.then(doThis.bind(null, item, index)).catch(onError && onError.bind(null, item, index))
          }, Promise.resolve(context))
