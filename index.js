@@ -8,7 +8,7 @@
          if (!Array.isArray(array)) { context = array.context;  array = array.array }// Mapping arguments
          return array.reduce(function iterator(Promise, item, index) {
             return Promise.then(doThis.bind(null, item, index, context)).catch(onError && onError.bind(null, item, index))
-         }, Promise.resolve())
+         }, Promise.resolve()).then(function (context) { return context }.bind(null, context))
       })
    }
 
