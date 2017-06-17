@@ -13,5 +13,15 @@
    import "thenForEach"
 
    const arr = [1,2,3,4,5]
+   const context = {a: 1} // (optional)
+
+   Promise.resolve(arr)
+      .thenForEach<number|void|{value: number, context:any}>(doFn, context)
+      .then((v: number|void|{value: number, context:any}) => console.log(v))
+
+   function doFn(item: number, i: number, context: any) {
+      console.log(i, item)
+      if (i === arr.length - 1) return item // returning last value just to show chaining works.
+   }
 
    ````
