@@ -2,12 +2,13 @@
   "name": "thenForEach",
   "version": "0.0.1",
   "description": "A prototype function to return a promise of chained promises made by binding each value in an array to chained then calls.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "pending"
+    "install": "node_modules/.bin/tsc",
+    "tsc:w": "node_modules/.bin/tsc -w"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,6 @@
   "author": "Vikas Gautam <v33vikasgautam@gmail.com> (http://mytrikks.blogspot.com)",
   "license": "MIT",
   "devDependencies": {
-    "promise": "latest"
+    "typescript": "^2.3.4"
   }
 }
