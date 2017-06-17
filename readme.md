@@ -1,19 +1,17 @@
-<h3>thenForEach</h3>
-<hr>
-<h4>Description</h4>
-   
-   * A prototype function for promise library to iterate over elements of resolved array, by chaining them one and after other with a `doThis` and `onError` function.
-   * Syntax :-
-   
+# thenForEach
+
+- ### Intro  
+   **thenForEach** is a NodeJs module that extends global `Promise` variable to provide a method `.thenForEach()` which returns a Promise chain to loop through each element of an `Array`.
+
+- ### Install  
+   `npm install git+https://github.com/Vikasg7/thenForEach.git`  
+
+- ### Usage (in TypeScript)  
+   For detailed usage, please check `src/tests/test.ts`.  
    ````javascript
-         var thenForEach = require("thenForEach")
-         var Promise = thenForEach.extends(require("promise"))
-         Promise.resolve({array: [1,2,3,4], context: {}})
-            .thenForEach(doThis, onError) 
-      // OR .thenForEach({doThis: function () {}, onError: function () {}})
-            .then(function (context) {})
+   // This will extend global Promise Variable to include an extra method named .thenForEach
+   import "thenForEach"
+
+   const arr = [1,2,3,4,5]
+
    ````
-   * `doThis` is resolved with `(item, index, context)`
-   * `onError` is resolved with `(item, index, error)`
-   * Providing `onError` function is optional.
-   * Please check tests folder to know more about the usage.
