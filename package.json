@@ -1,8 +1,9 @@
 {
   "name": "thenForEach",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A prototype function to return a promise of chained promises made by binding each value in an array to chained then calls.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "directories": {
     "test": "tests"
   },
@@ -12,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "pending"
+    "url": "https://github.com/Vikasg7/thenForEach.git"
   },
   "keywords": [
     "pending"
