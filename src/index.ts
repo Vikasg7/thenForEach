@@ -1,6 +1,6 @@
 // The pattern of extending global or third party class has been copied from rxjs/add/operator in angular2
 
-function thenForEach<R>(doFn: (item?: any, index?: number, context?: any) => R, context?: any): Promise<R|{value: R, context: any}> {
+function thenForEach<R>(doFn: (item?: any, index?: number, context?: any) => Promise<R>|R, context?: any): Promise<R|{value: R, context: any}> {
    return this.then((arr: Array<any>): Promise<R> => {
       if (!Array.isArray(arr)) throw "Error: thenForEach must receive an array."
       return arr.reduce((Promise: Promise<R>, item: any, index: number) => {
