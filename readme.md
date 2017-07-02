@@ -1,7 +1,7 @@
 # thenForEach
 
 - ### Intro  
-   **thenForEach** is a NodeJs module that extends global `Promise` variable to provide a method `.thenForEach()` which returns a Promise chain to loop through each element of an `Array`.
+   **thenForEach** is a NodeJs module that extends global `Promise` variable to provide a method `.thenForEach()` which returns a Promise chain to loop through each element of an `Array` or `Iterable`.
 
 - ### Install  
    `npm install git+https://github.com/Vikasg7/thenForEach.git`  
@@ -13,15 +13,14 @@
    import "thenForEach"
 
    const arr = [1,2,3,4,5]
+   const iterable = arr.entries()
    const context = {a: 1} // (optional)
 
-   Promise.resolve(arr)
-      .thenForEach<number|void|{value: number, context:any}>(doFn, context)
-      .then((v: number|void|{value: number, context:any}) => console.log(v))
+   Promise.resolve(arr || iterable)
+      .thenForEach<number>(doFn, context)
+      .then((v: any) => console.log(v))
 
    function doFn(item: number, i: number, context: any) {
       console.log(i, item)
-      if (i === arr.length - 1) return item // returning last value just to show chaining works.
    }
-
    ````
