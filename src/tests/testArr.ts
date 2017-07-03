@@ -11,7 +11,7 @@ function test1() {
          if (i === 4) throw "Some Error"
          console.log(i, item)
       })
-      .catch((error) => console.log(error))
+      .catch((error: any) => console.log(error))
       .then(() => console.log("\n------------------------------------------\n"))    
 }
 

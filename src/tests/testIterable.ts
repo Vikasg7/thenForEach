@@ -8,11 +8,11 @@ function test1() {
    const iterable = arr.entries()
    console.log("Test1: Throwing error while looping through and catching with single catch call at the end of the chain.")
    return Promise.resolve(iterable)
-      .thenForEach<void>((item: number, i) => {
+      .thenForEach<number>((item: number, i) => {
          if (i === 4) throw "Some Error"
          console.log(i, item)
       })
-      .catch((error) => console.log(error))
+      .catch((error: any) => console.log(error))
       .then(() => console.log("\n------------------------------------------\n"))
 }
 
@@ -22,7 +22,7 @@ function test2() {
    console.log("Test2: a more complete test")
    const context = {a: 1}
    return Promise.resolve(iterable)
-      .thenForEach<void>(doFn, context)
+      .thenForEach<number>(doFn, context)
       .then((v: any) => console.log(v))
       .then(() => console.log("\n------------------------------------------\n"))
 }
