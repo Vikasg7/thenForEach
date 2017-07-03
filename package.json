@@ -20,7 +20,7 @@
   ],
   "author": "Vikas Gautam <v33vikasgautam@gmail.com> (http://mytrikks.blogspot.com)",
   "license": "MIT",
-  "devDependencies": {
-    "typescript": "^2.3.4"
+  "dependencies": {
+    "typescript": "latest"
   }
 }
