@@ -1,7 +1,7 @@
 // this will extend the global Promise variable
 import "../index"
 
-test1().then(test2)
+test1().then(test2).then(test3)
 
 function test1() {
    const arr = [1,2,3,4,5]
@@ -27,4 +27,15 @@ function test2() {
 
 function doFn(item: number, i: number, context: any) {
    console.log(i, item)
+}
+
+
+function test3() {
+   const arr = [1,2,3,4,5]
+   console.log("Test3: resolving an object having arrOrIterable and context")
+   const context = {a: 1}
+   return Promise.resolve({arrOrIterable: arr, context})
+      .thenForEach<number>(doFn, context)
+      .then((v: any) => console.log(v))
+      .then(() => console.log("\n------------------------------------------\n"))
 }

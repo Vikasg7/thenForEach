@@ -1,12 +1,16 @@
 function thenForEach<T>(doFn: (item?: T, index?: number, context?: any) => void|Promise<void>, context?: any): Promise<any> {
    return this.then(validate).then(() => context)
-   function validate(arrOrIterable: Array<any>|IterableIterator<any>): Promise<void> {
+   function validate(arrOrIterable: any): Promise<void> {
       let i = -1
+      if (arrOrIterable.context && arrOrIterable.arrOrIterable) {
+         context = arrOrIterable.context
+         arrOrIterable = arrOrIterable.arrOrIterable
+      }
       if (Array.isArray(arrOrIterable)) {
          return iterateArr<T>(arrOrIterable, i, context, doFn)
       } else if (typeof arrOrIterable[Symbol.iterator] === 'function') {
          return iterateIterable<T>(arrOrIterable, i, context, doFn)
-      } else  {
+      } else {
          throw `Error: thenForEach must receive an array or iterable but ${typeof arrOrIterable} received.`
       }
    }
