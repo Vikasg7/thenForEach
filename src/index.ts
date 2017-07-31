@@ -1,4 +1,4 @@
-function thenForEach<T>(doFn: (item?: T, index?: number, context?: any) => void|Promise<void>, context?: any): Promise<any> {
+function thenForEach<T>(doFn: (item?: T, index?: number, context?: any) => any|Promise<any>, context?: any): Promise<any> {
    return this.then(validate).then(() => context)
    function validate(arrOrIterable: any): Promise<void> {
       let i = -1
@@ -16,7 +16,7 @@ function thenForEach<T>(doFn: (item?: T, index?: number, context?: any) => void|
    }
 }
 
-function iterateArr<T>(arr: Array<any>, i: number, context: any, doFn: (item?: T, index?: number, context?: any) => void|Promise<void>): Promise<void> {
+function iterateArr<T>(arr: Array<any>, i: number, context: any, doFn: (item?: T, index?: number, context?: any) => any|Promise<any>): Promise<any> {
    if (!arr.length) return
    const item = arr.shift()
    return Promise.resolve(<T>item)
@@ -24,7 +24,7 @@ function iterateArr<T>(arr: Array<any>, i: number, context: any, doFn: (item?: T
       .then(() => iterateArr(arr, i, context, doFn))
 }
 
-function iterateIterable<T>(iterable: IterableIterator<T>, i: number, context: any, doFn: (item?: T, index?: number, context?: any) => void|Promise<void>): Promise<void> {
+function iterateIterable<T>(iterable: IterableIterator<T>, i: number, context: any, doFn: (item?: T, index?: number, context?: any) => any|Promise<any>): Promise<any> {
    const item = iterable.next()
    if (item.done) return
    return Promise.resolve(<T>item.value)

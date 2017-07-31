@@ -1,6 +1,6 @@
 {
   "name": "thenForEach",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A prototype function to return a promise of chained promises made by binding each value in an array to chained then calls.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
