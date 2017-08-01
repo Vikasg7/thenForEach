@@ -21,7 +21,7 @@ function iterateArr<T>(arr: Array<any>, i: number, context: any, doFn: (item?: T
    const item = arr.shift()
    return Promise.resolve(<T>item)
       .then((item: T) => doFn(item, i+=1, context))
-      .then(() => iterateArr(arr, i, context, doFn))
+      .then((_continue: any) => _continue !== false && iterateArr(arr, i, context, doFn))
 }
 
 function iterateIterable<T>(iterable: IterableIterator<T>, i: number, context: any, doFn: (item?: T, index?: number, context?: any) => any|Promise<any>): Promise<any> {
@@ -29,7 +29,7 @@ function iterateIterable<T>(iterable: IterableIterator<T>, i: number, context: a
    if (item.done) return
    return Promise.resolve(<T>item.value)
       .then((item: T) => doFn(item, i+=1, context))
-      .then(() => iterateIterable(iterable, i, context, doFn))
+      .then((_continue: any) => _continue !== false && iterateIterable(iterable, i, context, doFn))
 }
 
 // The pattern of extending global or third party class has been copied from rxjs/add/operator in angular2
