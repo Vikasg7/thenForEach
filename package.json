@@ -8,8 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "install": "node_modules/.bin/tsc",
-    "tsc:w": "node_modules/.bin/tsc -w"
+    "install": "tsc",
+    "tsc:w": "tsc -w"
   },
   "repository": {
     "type": "git",
